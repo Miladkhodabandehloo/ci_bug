@@ -6,6 +6,13 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: on-failure
+    image: "miladkhodabandehloo/docker_bug_uwsgi_server"
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["python", "manage.py", "test"]
 
   nginx:
     build:
@@ -16,3 +23,4 @@ services:
     ports:
     - 80:80
     restart: always
+    image: "miladkhodabandehloo/docker_bug_nginx"

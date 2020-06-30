@@ -6,8 +6,13 @@ services:
   - docker
 
 before_install:
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - docker-compose build
 
 
 script:
-  - echo "done for now."
+  - docker-compose run --rm uwsgi_server python manage.py test
+
+after_success:
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - docker-compose push
+
