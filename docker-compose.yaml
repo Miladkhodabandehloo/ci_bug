@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  uwsgi_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+
+  nginx:
+    build:
+      context: .
+      dockerfile: nginxDockerfile
+    depends_on:
+      - uwsgi_server
+    ports:
+    - 80:80
+    restart: always
