@@ -1,0 +1,21 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "uwsgi_server",
+      "image": "miladkhodabandehloo/docker_bug_uwsgi_server",
+      "hostname": "uwsgi_server",
+      "essential": false,
+      "memory": 1024
+    },
+    {
+      "name": "nginx_server",
+      "image": "miladkhodabandehloo/docker_bug_nginx",
+      "host": "nginx_server",
+      "essential": true,
+      "portMappings": [{"hostPort": 80, "containerPort": 80}],
+      "links": ["uwsgi_server"],
+      "memory": 1024
+    }
+  ]
+}

@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     restart: on-failure
     image: "miladkhodabandehloo/docker_bug_uwsgi_server"
+    ports:
+    - 8080:8080
 
   test:
     build:
