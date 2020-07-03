@@ -10,7 +10,7 @@ before_install:
 
 
 script:
-  - docker-compose run --rm uwsgi_server python manage.py test
+  - docker-compose run --rm uwsgi-server python manage.py test
 
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
