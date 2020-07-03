@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  uwsgi_server:
+  uwsgi-server:
     build:
       context: .
       dockerfile: Dockerfile
@@ -21,7 +21,7 @@ services:
       context: .
       dockerfile: nginxDockerfile
     depends_on:
-      - uwsgi_server
+      - uwsgi-server
     ports:
     - 80:80
     restart: always
